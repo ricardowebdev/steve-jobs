@@ -54,11 +54,7 @@ $(document).ready(function(){
 		    	}
 		    });
     	}
-    });
-
-    if($('#descricao').length) {
-    	CKEDITOR.replace('descricao');	
-    }
+    });    
 	
 	if($('#textoBanner').length) {
 		CKEDITOR.replace('textoBanner');

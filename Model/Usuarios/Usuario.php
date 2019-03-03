@@ -82,14 +82,16 @@ class Usuario extends BaseModel
         $result   = $this->executaQuery($sql, [], [], "True");
         $usuarios = [];
 
-        foreach ($result as $dados) {
-            $usuario = new Usuario;
-            $usuario->setId($dados['id']);
-            $usuario->setNome($dados['nome']);
-            $usuario->setEmail($dados['email']);
-            $usuario->setSenha($dados['senha']);
+        if ($result) {
+            foreach ($result as $dados) {
+                $usuario = new Usuario;
+                $usuario->setId($dados['id']);
+                $usuario->setNome($dados['nome']);
+                $usuario->setEmail($dados['email']);
+                $usuario->setSenha($dados['senha']);
 
-            $usuarios[] = $usuario;
+                $usuarios[] = $usuario;
+            }
         }
 
         return $usuarios;

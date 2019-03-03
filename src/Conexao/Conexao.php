@@ -6,28 +6,33 @@ class Conexao
 {
     public static $instance;
     public static $key    = 'Dexter';
-    public static $header = [
-     'typ' => 'JWT',
-     'alg' => 'HS256'
-      ];
-        
+    public static $header = ['typ' => 'JWT', 'alg' => 'HS256'];
+
     private function __construct()
     {
+    }
+
+    public static function readConnection()
+    {
+        $dados = file_get_contents('env.json');
+        $dados = json_decode($dados);
+        return $dados;
     }
 
     public static function getInstance()
     {
         $env = 'prod';
 
-        if (!isset(self::$instance)) {            
+        if (!isset(self::$instance)) {
             if ($env == 'dev') {
                 $dsn  = 'mysql:host=127.0.0.1;dbname=vitrine';
                 $user = 'root';
                 $pass = 'develop';
             } else {
-                $dsn  = 'mysql:host=mysql995.umbler.com:41890;dbname=dcroficina';
-                $user = 'dcroficina';
-                $pass = 'dcr02062014';
+                $dados = self::readConnection();
+                $dsn   = $dados->dsn;
+                $user  = $dados->user;
+                $pass  = $dados->pass;
             }
 
             self::$instance = new \PDO($dsn, $user, $pass);

@@ -5,7 +5,6 @@ class Validation
 {
     public function validate($params, $dados)
     {
-
         $errors = null;
 
         foreach ($params as $key => $value) {

@@ -11,8 +11,12 @@ class AutenticaController
 
     public static function autentica()
     {
-
         if (!isset($_SESSION['tkLogged'])) {
+            if ($_GET['r'] === 'cron/listing') {
+                self::authApi();
+                return true;
+            }
+
             $autenticado = new Autenticacao();
 
             $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -48,6 +52,13 @@ class AutenticaController
     public static function error()
     {
         return View::mountPage('Helper', '404', "");
+    }
+
+    public static function authApi()
+    {
+        $token = rand(1, 100000).date('Ymdhis');
+        $_SESSION['tkLogged'] = base64_encode($token);
+        $_SESSION['user']     = "Ricardo dos Santos Souza";
     }
 
     public static function logoff()

@@ -12,15 +12,15 @@ AutenticaController::autentica();
 if (!empty($_GET['r'])) {
     $params = explode('/', $_GET['r']);
 
-    $controller = !empty($params[0])  ? $params[0] : 'Dashboard';
+    $controller = !empty($params[0])  ? $params[0] : 'Job';
     $method     = !empty($params[1])  ? $params[1] : 'inicia';
     $id         = !empty($params[2])  ? $params[2] : 0;
     $folder     = ucfirst(strtolower($controller));
     $controller = ucfirst(strtolower($controller))."Controller";
 } else {
-    $folder     = 'Dashboard';
-    $controller = 'DashboardController';
-    $method     = 'inicia';
+    $folder     = 'Job';
+    $controller = 'JobController';
+    $method     = 'listing';
     $id         = 0;
 }
 

@@ -8,7 +8,6 @@
 	<script type="text/javascript" src="src/assets/js/Chart.bundle.min.js"></script>
 	<script type="text/javascript" src="src/assets/js/bootstrap-select.min.js"></script>
 	<script type="text/javascript" src="src/assets/js/bootstrap-tour.js"></script>
-	<script type="text/javascript" src="src/assets/js/myTour.js"></script>
 	<script type="text/javascript" src="src/assets/js/app.js"></script>
 	<script type="text/javascript" src="src/assets/js/itens.js"></script>		
 </body>
